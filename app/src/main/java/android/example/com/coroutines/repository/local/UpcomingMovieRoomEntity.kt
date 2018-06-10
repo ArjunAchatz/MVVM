@@ -27,18 +27,18 @@ class UpcomingMovieRoomEntity(
         fun create(upcomingMovie: UpcomingMovie): UpcomingMovieRoomEntity {
             return UpcomingMovieRoomEntity(
                     upcomingMovie.id,
-                    upcomingMovie.voteCount,
+                    upcomingMovie.vote_count,
                     upcomingMovie.video,
-                    upcomingMovie.voteAverage,
+                    upcomingMovie.vote_average,
                     upcomingMovie.title,
                     upcomingMovie.popularity,
-                    upcomingMovie.posterPath,
-                    upcomingMovie.originalLanguage,
-                    upcomingMovie.originalTitle,
-                    upcomingMovie.backdropPath,
+                    upcomingMovie.poster_path,
+                    upcomingMovie.original_language,
+                    upcomingMovie.original_title,
+                    upcomingMovie.backdrop_path,
                     upcomingMovie.adult,
                     upcomingMovie.overview,
-                    upcomingMovie.releaseDate
+                    upcomingMovie.release_date
             )
         }
     }

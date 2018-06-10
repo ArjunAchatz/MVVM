@@ -7,7 +7,7 @@ import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object TheMovieDbService {
+object TheMovieDbApiService {
 
     private val theMovieDbAPI: TheMovieDbAPI = Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")

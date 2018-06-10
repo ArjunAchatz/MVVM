@@ -14,18 +14,18 @@ data class UpcomingMovieDates(
 )
 
 data class UpcomingMovie (
+        var vote_count: Int? = 0,
         var id: Long? = 0,
-        var voteCount: Int? = 0,
         var video: Boolean? = false,
-        var voteAverage: Double? = 0.0,
+        var vote_average: Double? = 0.0,
         var title: String? = "",
         var popularity: Double? = null,
-        var posterPath: String? = "",
-        var originalLanguage: String? = "",
-        var originalTitle: String? = "",
-        var genreIds: List<Int>? = ArrayList(),
-        var backdropPath: String? = "",
+        var poster_path: String? = "",
+        var original_language: String? = "",
+        var original_title: String? = "",
+        var genre_ids: List<Int>? = ArrayList(),
+        var backdrop_path: String? = "",
         var adult: Boolean? = null,
         var overview: String? = "",
-        var releaseDate: String? = ""
+        var release_date: String? = ""
 )

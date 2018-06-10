@@ -2,7 +2,7 @@ package android.example.com.coroutines.repository
 
 import android.arch.lifecycle.LiveData
 import android.example.com.coroutines.di.MoviesRoomDbService
-import android.example.com.coroutines.di.TheMovieDbService
+import android.example.com.coroutines.di.TheMovieDbApiService
 import android.example.com.coroutines.repository.local.UpcomingMovieRoomEntity
 import android.util.Log
 import kotlinx.coroutines.experimental.CommonPool
@@ -14,8 +14,9 @@ object MoviesRepository {
         launch(CommonPool) {
             Log.d(TAG, "FETCHING NEW UPCOMING MOVIES")
             try {
-                TheMovieDbService.getUpcomingMovies().await().results.forEach {
+                TheMovieDbApiService.getUpcomingMovies().await().results.forEach {
                     MoviesRoomDbService.upComingMoviesDao.insert(UpcomingMovieRoomEntity.create(it))
+                    Log.d("INSERTING MOVIE", "$it")
                 }
             } catch (e: Throwable){
                 Log.d(TAG, "$e")
