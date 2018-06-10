@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.1'
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    implementation 'com.android.support:support-v4:27.1.1'
     kapt "android.arch.lifecycle:compiler:$lifecycle_version"
     // Room
     implementation "android.arch.persistence.room:runtime:$room_version"
