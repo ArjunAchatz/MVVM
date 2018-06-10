@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             android:visibility="@{listOfUpcomingMovies.isLoading ? View.GONE : View.VISIBLE}"
-            app:setList="@{listOfUpcomingMovies}"/>
+            app:setList="@{listOfUpcomingMovies.upcomingMovies}"/>
 
     </FrameLayout>
 
