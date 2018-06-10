@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="listOfUpcomingMovies"
+            type="android.example.com.coroutines.viewmodel.UpcomingMoviesViewModel"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/loading_progress_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="@{listOfUpcomingMovies.isLoading ? View.VISIBLE : View.GONE}"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/upcoming_movies_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            android:visibility="@{listOfUpcomingMovies.isLoading ? View.GONE : View.VISIBLE}"
+            app:setList="@{listOfUpcomingMovies}"/>
+
+    </FrameLayout>
+
+</layout>
+
+
