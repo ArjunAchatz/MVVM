@@ -13,13 +13,18 @@ class UpcomingMoviesViewModel : ViewModel() {
             return data ?: refresh()
         }
 
-    val isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val isLoading = MutableLiveData<Boolean>()
+    val displayDetails = MutableLiveData<UpcomingMovieRoomEntity>()
 
     fun refresh(): LiveData<List<UpcomingMovieRoomEntity>>? {
         isLoading.value = true
         data = MoviesRepository.getUpcomingMovies()
         isLoading.value = false
         return data
+    }
+
+    fun displayDetails(upcomingMovieRoomEntity: UpcomingMovieRoomEntity){
+        displayDetails.value = upcomingMovieRoomEntity
     }
 
     private var data: LiveData<List<UpcomingMovieRoomEntity>>? = null

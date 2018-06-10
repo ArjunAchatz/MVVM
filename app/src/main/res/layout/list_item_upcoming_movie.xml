@@ -6,17 +6,21 @@
         <variable
             name="upcomingMovie"
             type="android.example.com.coroutines.repository.local.UpcomingMovieRoomEntity"/>
+        <variable
+            name="upcomingMoviesViewModel"
+            type="android.example.com.coroutines.viewmodel.UpcomingMoviesViewModel"/>
     </data>
 
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="40dp">
 
         <TextView
             android:id="@+id/upcoming_movie_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> upcomingMoviesViewModel.displayDetails(upcomingMovie)}"
             android:text="@{upcomingMovie.title}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
