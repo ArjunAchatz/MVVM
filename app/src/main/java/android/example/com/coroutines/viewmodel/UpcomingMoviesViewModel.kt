@@ -5,22 +5,24 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.example.com.coroutines.repository.MoviesRepository
 import android.example.com.coroutines.repository.local.UpcomingMovieRoomEntity
+import android.util.Log
 
 class UpcomingMoviesViewModel : ViewModel() {
 
-    val upcomingMovies: LiveData<List<UpcomingMovieRoomEntity>>?
+    val upcomingMovies: LiveData<List<UpcomingMovieRoomEntity>>
         get() {
             return data ?: refresh()
         }
 
-    val isLoading = MutableLiveData<Boolean>()
     val displayDetails = MutableLiveData<UpcomingMovieRoomEntity>()
+    val isLoading = MutableLiveData<Boolean>().apply {
+        value = true
+    }
 
-    fun refresh(): LiveData<List<UpcomingMovieRoomEntity>>? {
+    fun refresh(): LiveData<List<UpcomingMovieRoomEntity>> {
         isLoading.value = true
         data = MoviesRepository.getUpcomingMovies()
-        isLoading.value = false
-        return data
+        return data ?: MutableLiveData()
     }
 
     fun displayDetails(upcomingMovieRoomEntity: UpcomingMovieRoomEntity){

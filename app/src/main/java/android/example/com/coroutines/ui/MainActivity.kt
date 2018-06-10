@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val upcomingMoviesViewModel = ViewModelProviders
                 .of(this@MainActivity)
                 .get(UpcomingMoviesViewModel::class.java)

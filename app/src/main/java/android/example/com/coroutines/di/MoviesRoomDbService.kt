@@ -7,7 +7,7 @@ import android.example.com.coroutines.repository.local.UpcomingMovieDao
 
 object MoviesRoomDbService {
 
-    private var moviesRoomDb: MoviesRoomDb? = null
+    lateinit var moviesRoomDb: MoviesRoomDb
 
     fun init(context: Context) {
         moviesRoomDb =
@@ -15,7 +15,7 @@ object MoviesRoomDbService {
                         .build()
     }
 
-    val upComingMoviesDao: UpcomingMovieDao?
-        get() = moviesRoomDb?.getUpcomingMoviesDao()
+    val upComingMoviesDao: UpcomingMovieDao
+        get() = moviesRoomDb.getUpcomingMoviesDao()
 
 }

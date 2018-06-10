@@ -10,18 +10,18 @@ import kotlinx.coroutines.experimental.launch
 
 object MoviesRepository {
     val TAG = MoviesRepository::class.java.simpleName
-    fun getUpcomingMovies(): LiveData<List<UpcomingMovieRoomEntity>>? {
+    fun getUpcomingMovies(): LiveData<List<UpcomingMovieRoomEntity>> {
         launch(CommonPool) {
             Log.d(TAG, "FETCHING NEW UPCOMING MOVIES")
             try {
                 TheMovieDbService.getUpcomingMovies().await().results.forEach {
-                    MoviesRoomDbService.upComingMoviesDao?.insert(UpcomingMovieRoomEntity.create(it))
+                    MoviesRoomDbService.upComingMoviesDao.insert(UpcomingMovieRoomEntity.create(it))
                 }
             } catch (e: Throwable){
                 Log.d(TAG, "$e")
             }
         }
         Log.d(TAG, "RETURNING UPCOMING MOVIES FROM DB")
-        return MoviesRoomDbService.upComingMoviesDao?.getAllUpcomingMovies()
+        return MoviesRoomDbService.upComingMoviesDao.getAllUpcomingMovies()
     }
 }

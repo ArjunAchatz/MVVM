@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminate="true"
-            android:visibility="@{listOfUpcomingMovies.isLoading ? View.VISIBLE : View.GONE}"/>
+            app:isLoading="@{listOfUpcomingMovies.isLoading}"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/upcoming_movies_recyclerview"

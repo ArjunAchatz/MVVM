@@ -8,6 +8,8 @@ import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
 
 class UpComingMoviesAdapter(
         private val upcomingMoviesList: MutableList<UpcomingMovieRoomEntity>,
@@ -29,11 +31,14 @@ class UpComingMoviesAdapter(
     }
 
     fun swapItems(newUpcomingMoviesList: List<UpcomingMovieRoomEntity>){
-        val diffUtils = UpcomingMoviesDiffUtils(upcomingMoviesList, newUpcomingMoviesList)
-        val diffResult = DiffUtil.calculateDiff(diffUtils)
-        upcomingMoviesList.clear()
-        upcomingMoviesList.addAll(newUpcomingMoviesList)
-        diffResult.dispatchUpdatesTo(this)
+        launch(UI) {
+            val diffUtils = UpcomingMoviesDiffUtils(upcomingMoviesList, newUpcomingMoviesList)
+            val diffResult = DiffUtil.calculateDiff(diffUtils)
+            upcomingMoviesList.clear()
+            upcomingMoviesList.addAll(newUpcomingMoviesList)
+            diffResult.dispatchUpdatesTo(this@UpComingMoviesAdapter)
+            upcomingMoviesViewModel.isLoading.value = false
+        }
     }
 
     class UpcomingMoviesDiffUtils(oldUpcomingMoviesList: List<UpcomingMovieRoomEntity>,
